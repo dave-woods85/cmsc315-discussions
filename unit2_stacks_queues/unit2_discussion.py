@@ -18,27 +18,37 @@ class Stack:
     def __init__(self):
         # TODO (Student): Create the internal data structure for the stack.
         # Hint: A Python list can be used to store stack values.
-        pass
+        self.stack = [] # new empty stack
+        self._firstIndex = 0 # index of the last item placed onto the stack (the top)
 
     def push(self, value):
         # TODO (Student): Add value to the stack.
+        self.stack.append(value) # places the value on the "top" of the stack
+        self._firstIndex = self.stack[len(self.stack) -1] #update the index for the top of the stack
         # Add a short comment explaining why this operation supports LIFO behavior.
-        pass
+        # placing the item at the top of the stack will ensure that it will be the first item to be removed by popping
+
 
     def pop(self):
         # TODO (Student): Remove and return the most recently added value.
+        if len(self.stack) == 0:
+            print("Nothing in stack")
+        else:
+            popped_item = self.stack[self._firstIndex]
+            del[self._firstIndex]
+            return popped_item
         # Improve or explain empty-stack handling.
-        # What should happen if the stack is empty?
-        pass
+        # Empty stack is handled by notifying the user that the stack is empty
 
     def peek(self):
         # TODO (Student): Return the top value without removing it.
+        return self.stack[self._firstIndex]
         # Add a comment explaining what peek does.
-        pass
+        # Peek returns the top value in the stack without altering the stack
 
     def is_empty(self):
         # TODO (Student): Return True if the stack has no values.
-        pass
+        return len(self.stack) == 0 # Returns true if the stack is empty or false if it contains any items
 
 
 class Queue:
@@ -88,9 +98,24 @@ def main():
 
 print("\n=== STACK DEMO ===")
 print("TODO: Create a Stack object, demonstrate LIFO behavior,")
+my_stack = Stack()
+my_stack.push(4)
+my_stack.push(90)
+my_stack.push(55)
+print(my_stack)
+my_stack.pop()
+my_stack.push(10)
+print(my_stack)
 print("      test popping from an empty stack,")
+empty_stack = Stack()
+my_stack.pop()
 print("      test peeking at an empty stack,")
+my_stack.peek()
 print("      and verify a single-item stack becomes empty after removal.")
+empty_stack.push(1)
+print(empty_stack)
+empty_stack.pop()
+print(empty_stack)
 
 # ===============================
 # TODO (Student): QUEUE DEMO
@@ -115,3 +140,4 @@ print("      and verify a single-item queue becomes empty after removal.")
 
 if __name__ == "__main__":
     main()
+
