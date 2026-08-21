@@ -18,37 +18,44 @@ class Stack:
     def __init__(self):
         # TODO (Student): Create the internal data structure for the stack.
         # Hint: A Python list can be used to store stack values.
-        self.stack = [] # new empty stack
-        self._firstIndex = 0 # index of the last item placed onto the stack (the top)
+        self.stack = [] # new empty stack (list)
+
 
     def push(self, value):
         # TODO (Student): Add value to the stack.
-        self.stack.append(value) # places the value on the "top" of the stack
-        self._firstIndex = self.stack[len(self.stack) -1] #update the index for the top of the stack
+        try:
+            if int(value): # check for proper integer input
+                self.stack.append(value) # places the value on the "top" of the stack
+        except ValueError:
+            print("Please enter an integer")
         # Add a short comment explaining why this operation supports LIFO behavior.
         # placing the item at the top of the stack will ensure that it will be the first item to be removed by popping
 
 
     def pop(self):
         # TODO (Student): Remove and return the most recently added value.
-        if len(self.stack) == 0:
-            print("Nothing in stack")
+        if self.is_empty():
+            return print("Nothing in stack to pop")
         else:
-            popped_item = self.stack[self._firstIndex]
-            del[self._firstIndex]
+            popped_item = self.stack[-1]
+            del(self.stack[-1])
             return popped_item
         # Improve or explain empty-stack handling.
         # Empty stack is handled by notifying the user that the stack is empty
 
     def peek(self):
         # TODO (Student): Return the top value without removing it.
-        return self.stack[self._firstIndex]
+        if self.is_empty():
+            return print("Nothing in stack to peek at")
+        else:
+            return self.stack[-1]
         # Add a comment explaining what peek does.
         # Peek returns the top value in the stack without altering the stack
 
     def is_empty(self):
         # TODO (Student): Return True if the stack has no values.
         return len(self.stack) == 0 # Returns true if the stack is empty or false if it contains any items
+
 
 
 class Queue:
@@ -77,6 +84,7 @@ class Queue:
         pass
 
 
+
 def main():
     print("=== UNIT 2: STACKS AND QUEUES ===")
 
@@ -102,20 +110,22 @@ my_stack = Stack()
 my_stack.push(4)
 my_stack.push(90)
 my_stack.push(55)
-print(my_stack)
+print(my_stack.stack)
 my_stack.pop()
 my_stack.push(10)
-print(my_stack)
+print(my_stack.stack)
+print("      test for non integer input,")
+my_stack.push('test')
 print("      test popping from an empty stack,")
 empty_stack = Stack()
-my_stack.pop()
+empty_stack.pop()
 print("      test peeking at an empty stack,")
-my_stack.peek()
+empty_stack.peek()
 print("      and verify a single-item stack becomes empty after removal.")
 empty_stack.push(1)
-print(empty_stack)
+print(empty_stack.stack)
 empty_stack.pop()
-print(empty_stack)
+print(empty_stack.stack)
 
 # ===============================
 # TODO (Student): QUEUE DEMO
