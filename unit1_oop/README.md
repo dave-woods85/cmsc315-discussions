@@ -33,6 +33,7 @@ Your reflection should be approximately 150–200 words and address the followin
 This was more of a refresher on how these concepts with in Python compared to Java, as it
 has been quite a while since one of my classes used Python. It's also been several months since
 I have had any programming specific classes at all, so I was pretty rusty.
+
 2. What challenges did you encounter, and how did you overcome them?
 Most of the challenges stemmed from my last of recent programming classes, and those classes not
 discussing repositories or how to update projects at all. Mostly just basic Python and Java. To overcome this
