@@ -170,7 +170,28 @@ def main():
     delete_at(my_list, 19)
     print(my_list)
 
+    # ===============================
+    # Real World Scenario
+    # ===============================
+    # Creating a grocery list with items to add to, remove from, and check for items on.
 
+    # Creating a grocery list with a few items
+    groceries = ["Brisket", "Milk", "Sesame Oil", "Honey", "Gochujang"]
+    print(f"Shopping List: {groceries}")
+
+    # Adding groceries into the list next to a like item
+    print("Adding brisket to my list: ")
+    insert_at(groceries, search_value(groceries,"Brisket") +1, "Pork Belly")
+    print(f"Shopping List: {groceries}")
+    # Deleting an item I don't need
+
+    print("Deleting milk from my list")
+    delete_at(groceries, search_value(groceries, "Milk"))
+    print(f"Shopping List: {groceries}")
+    # Checking for an item
+
+    print("Making sure gochujang is on my list")
+    search_value(groceries, "Gochujang")
 
 if __name__ == "__main__":
     main()
