@@ -188,8 +188,8 @@ def main():
     print("Deleting milk from my list")
     delete_at(groceries, search_value(groceries, "Milk"))
     print(f"Shopping List: {groceries}")
-    # Checking for an item
 
+    # Checking for an item
     print("Making sure gochujang is on my list")
     search_value(groceries, "Gochujang")
 
