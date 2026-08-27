@@ -8,6 +8,7 @@ This assignment focuses on understanding how lists behave when elements
 are inserted, removed, and searched. You will analyze how Python lists
 shift elements in memory and how different operations impact performance.
 """
+from readline import insert_text
 
 
 def insert_at(lst, index, value):
@@ -22,7 +23,12 @@ def insert_at(lst, index, value):
     - Use comments to explain how insertion performance may vary depending on
       where the insertion occurs.
     """
-    pass
+    if index <= len(lst):
+        lst.insert(index, value) # inserts the value at the specified index
+    else:
+        lst.insert(len(lst), value) # inserts the value at the end if the index is outside the list
+        print(f"The value {value} was placed at the end of the list in index {len(lst)-1} instead of at {index}")
+
 
 
 def delete_at(lst, index):
@@ -36,7 +42,11 @@ def delete_at(lst, index):
     - Return None if the index is invalid.
     - Add comments explaining why index validation and safe deletion are important.
     """
-    pass
+    if index < len(lst): # check for index that is in range
+        print(f"Deleted {lst[index]} from index: {index}.")
+        lst.pop(index)
+    else:
+        print(f"The specified index: {index} is out range for the list. Please use range 0 - {len(lst) -1}")
 
 
 def search_value(lst, value):
@@ -61,12 +71,19 @@ def main():
     #
     # Requirements:
     # 1. Create a list containing several values.
+    my_list = [22, 13, 44, 100, 9]
     # 2. Display the original list.
+    print(my_list)
     # 3. Test insertion at:
     #    - the beginning
+    insert_at(my_list, 0, 8)
     #    - the middle
+    insert_at(my_list, 3, 7)
     #    - the end
+    insert_at(my_list, len(my_list), 6)
+
     # 4. Display the list after each insertion.
+    print(my_list)
     # 5. Use comments to explain each step in the implementation.
 
     print("\n=== INSERTION TESTS ===")
@@ -79,11 +96,18 @@ def main():
     # Requirements:
     # 1. Delete an item from:
     #    - the beginning
+    delete_at(my_list, 0)
+    print(my_list)
     #    - the middle
+    delete_at(my_list, 3)
+    print(my_list)
     #    - the end
+    delete_at(my_list, len(my_list))
+    print(my_list)
     # 2. Display the removed value.
     # 3. Display the updated list after each deletion.
     # 4. Use comments to clearly explain what is happening in the output.
+
 
     print("\n=== DELETION TESTS ===")
     print("TODO: Demonstrate deletions from multiple positions.")
@@ -106,16 +130,16 @@ def main():
     # ===============================
     #
     # Demonstrate at least two edge cases.
-    #
-    # Example ideas:
-    # - Delete using an invalid index
-    # - Search for a missing value
-    # - Insert into an empty list
-    # - Delete from an empty list
-    # - Use comments to explain each edge case.
 
     print("\n=== EDGE CASES ===")
     print("TODO: Demonstrate at least two edge cases.")
+    # inserting a value well outside the length of the list
+    print("Inserting a value well outside the list length: ")
+    insert_at(my_list, 100, 9999)
+    print(my_list)
+    # deleting a value outside the length of the list
+    delete_at(my_list, 19)
+    print(my_list)
 
 
 
