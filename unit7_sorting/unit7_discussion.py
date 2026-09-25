@@ -57,6 +57,8 @@ def merge_sort(lst):
 
     """
     # establish indices
+    if len(lst) == 0: # handle an empty list
+        return print("Empty List!")
     start_index = 0
     end_index = len(lst) - 1
     if len(lst) == 1: # return the list if it is only one element
@@ -111,6 +113,8 @@ def print_wrap(lst, size):
     """
     Prints out a list at a designated wrap size (number of items per line)
     """
+    if lst is None or len(lst) == 0:
+        return
     remains = lst.copy() # Copy the passed list
     while len(remains) >= size: # Check for entire printable line
         print(remains[0 : size])
@@ -214,6 +218,13 @@ def main():
 
     print("\n=== EDGE CASE TESTS ===")
     print("TODO: Demonstrate and explain edge cases.")
+    print("Test Edge Case: Empty List")
+    empty_list = []
+    print_wrap(merge_sort(empty_list), 20)
+    print("Test Edge Case: List of Duplicates")
+    dupe_list = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    print_wrap(dupe_list, 20)
+
 
 
 
