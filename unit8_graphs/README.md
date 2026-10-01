@@ -28,6 +28,20 @@ After completing the programming assignment, add this reflection to your initial
 Your reflection should be approximately 150–200 words and address the following questions:
 
 1. What concepts or skills did you learn while completing this assignment?
+
+I learned how to create graphs and traverse them using breadth-first searching. This is obviously
+a useful tool to have in my kit. I can imagine I will be utilizing this type of dataset often!
+
 2. What challenges did you encounter, and how did you overcome them?
+
+At first, it was a bit confusing indexing the correct part of the dictionary as I still don't have
+as much experience with Python dictionaries. So I ended up accidentally appending the entire set
+of adjacent node to the visited list, which did not perform as I wanted it to.
+
 3. Compare BFS and DFS conceptually and describe real-world applications and use cases.
+
+BFS and DFS both perform a similar function, albeit in a different order. I can imagine that DFS would be
+a bit more adept at quickly finding a short route to a destination, while BFS would eventually do the same thing
+with more steps. This would be useful in any map navigation application but has already been outdone by newer,
+more fancy algorithms like Dijkstra and Bellman-Ford.
 

@@ -13,7 +13,7 @@ social connections).
 ===========================================================
 """
 
-from collections import deque
+from collections import deque, defaultdict
 
 
 def bfs(graph, start):
@@ -32,8 +32,21 @@ def bfs(graph, start):
     - Why neighbors are added to the queue.
     - How BFS differs from depth-first traversal.
     """
-
-    pass
+    # create an empty queue for the vertices
+    frontier_queue = deque([start])
+    # create a list of visited nodes
+    visited_nodes = []
+    if graph == [] or start == "" or start is None:
+        return "List empty or no starting node"
+    # while there are items in the queue, continue traversing
+    while frontier_queue:
+        current_node = frontier_queue.popleft() # grab the next item in the queue
+        if current_node not in visited_nodes:
+            visited_nodes.append(current_node) # add this node to visited list
+        for e in graph[current_node]: # traverse all adjacent
+            if e not in visited_nodes:
+                frontier_queue.append(e) # add new nodes to queue
+    return visited_nodes
 
 
 def main():
@@ -53,6 +66,25 @@ def main():
     print("\n=== GRAPH STRUCTURE ===")
     print("TODO: Create and display a graph.")
 
+    # draw the graph out by connected edges
+    my_graph_edges = [("A", "B"), ("A", "C"), ("A", "D"),
+                ("B", "D"), ("B" , "E"), ("C", "F"), ("D", "F")]
+
+    # create a dictionary to hold vertices and their adjacent nodes
+    my_graph = defaultdict(list)
+
+    # for each vertex, add their adjacent nodes to their dict
+    # slot in both directions since this is not a digraph
+    for x, y in my_graph_edges:
+        my_graph[x].append(y)
+        my_graph[y].append(x)
+
+    # neatly print out each vertex and its adjacent nodes
+    for vertex, adjacent in my_graph.items():
+        print(f"Vertex {vertex} is adjacent to {adjacent}.")
+
+
+
     # ===============================
     # TODO (Student): BFS TRAVERSAL
     # ===============================
@@ -67,6 +99,17 @@ def main():
 
     print("\n=== BFS TRAVERSAL ===")
     print("TODO: Perform and explain BFS traversal.")
+    print("Traversal from start node C:")
+    print(bfs(my_graph, "C"))
+    # Because BFS uses a queue, the first adjacent nodes encountered will be
+    # the next set of nodes visited, which by nature is the next closest node
+
+    # add an additional node connected to D
+    my_graph["D"].append("G")
+    my_graph["G"].append("D")
+    print("Traversal from start node C after adding a new node:")
+    print(bfs(my_graph, "C"))
+
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -85,6 +128,14 @@ def main():
 
     print("\n=== EDGE CASE TESTS ===")
     print("TODO: Demonstrate and explain edge cases.")
+    # Traversal from a different starting node (the last node)
+    print("Traversal from start node G:")
+    print(bfs(my_graph, "G"))
+
+    # Empty graph and node test
+    print("Testing empty graph and node:")
+    my_empty_graph = []
+    print(bfs(my_empty_graph, ""))
 
 
 
